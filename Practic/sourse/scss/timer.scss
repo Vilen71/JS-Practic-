@@ -1,0 +1,61 @@
+//todo ======================= - timer - =======================//
+.data {
+   padding: rem(60) 0 rem(180);
+   color: #fff;
+   font-size: rem(42);
+   text-align: center;
+   border-bottom: solid 1px #000;
+   background: #000;
+   // .data__title
+   &__title {
+      margin-bottom: em(15,42);
+   }
+   // .data__desc
+   &__desc {
+      font-size: rem(24);
+      opacity: 0.5;
+      margin-bottom: em(40,28);
+   }
+   // .data__container
+   &__container {
+      display: flex;
+      justify-content: space-around;
+      position: relative;
+
+      &::after {
+         content: '';
+         height: 10px;
+         width: 0%;
+         background-color: #fff;
+         position: absolute;
+         bottom: -65px;
+         left: 0;
+         border-radius: 20px;
+         animation: colorLoading 60s infinite ease-in-out;
+      }
+   }
+   // .data__text
+   &__text {
+      display: block;
+      font-size: rem(20);
+      width: 150px;
+   }
+}
+@keyframes colorLoading {
+   20% {
+      background-color: red;
+   }
+   40% {
+      background-color: yellow;
+   }
+   60% {
+      background-color: green;
+   }
+   80% {
+      background-color: blue;
+   }
+   100% {
+      width: 100%;
+      background-color: purple;
+   }
+}
