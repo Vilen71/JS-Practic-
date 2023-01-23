@@ -1,0 +1,485 @@
+.blackjack {
+  min-height: 100vh;
+  padding: 0 0 rem(100);
+  position: relative;
+  background-color: #084708;
+}
+.blackjack::after {
+  content: "";
+  width: 100%;
+  height: rem(100);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: yellowgreen;
+}
+.blackjack__container {
+  max-width: rem(1200);
+}
+.blackjack__header {
+  height: rem(100);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  background-color: yellowgreen;
+  margin-bottom: rem(100);
+  z-index: 2;
+}
+.blackjack__btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-column-gap: rem(60);
+     -moz-column-gap: rem(60);
+          column-gap: rem(60);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  position: absolute;
+  left: 50%;
+  top: 930px;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+.blackjack__btns.active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: visible;
+}
+.blackjack__start {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: rem(60);
+  position: relative;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  font-size: rem(24);
+  color: #c1c0c0;
+  font-style: italic;
+}
+.blackjack__start.hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+.blackjack__start_btn {
+  background-color: #007700;
+  text-align: center;
+  width: 34%;
+  margin: 0 auto;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+.blackjack__start_btn:hover {
+  background-color: #046f04;
+}
+.blackjack__start_btn.active {
+  opacity: 0.7;
+  pointer-events: none;
+}
+.blackjack__start_text {
+  -webkit-transition: all 0.2s ease 0s;
+  transition: all 0.2s ease 0s;
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.blackjack__game_round {
+  width: 12.5rem;
+  position: absolute;
+  font-size: 2.75rem;
+  bottom: 160px;
+  right: 180px;
+  opacity: 0.25;
+  color: #ffffff;
+}
+.blackjack__game_round span {
+  font-size: rem(84);
+}
+.blackjack__range {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: rem(600);
+  margin: 0 auto;
+}
+.blackjack__range.active {
+  pointer-events: none;
+}
+.blackjack__chip {
+  position: absolute;
+  right: 0;
+  bottom: -100%;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  -webkit-box-shadow: 3px 3px 6px #333;
+          box-shadow: 3px 3px 6px #333;
+  border-radius: 50%;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+.blackjack__chip img {
+  width: 100px;
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.blackjack__chip.active {
+  -webkit-transform: rotateX(20deg);
+          transform: rotateX(20deg);
+  right: 630px;
+  bottom: 530px;
+}
+
+.header-blackjack__score {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-column-gap: rem(15);
+     -moz-column-gap: rem(15);
+          column-gap: rem(15);
+  z-index: 3;
+  position: relative;
+  text-align: center;
+  font-size: rem(26);
+}
+.header-blackjack__img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 3;
+}
+.header-blackjack__img img {
+  width: 65px;
+  height: 65px;
+}
+.header-blackjack__text {
+  font-size: rem(24);
+}
+.header-blackjack__result {
+  font-size: rem(32);
+}
+.header-blackjack__bet {
+  display: block;
+  position: absolute;
+  right: rem(-130);
+  width: rem(105);
+  bottom: 0;
+  text-align: left;
+  z-index: 80;
+  line-height: lh(48, 26);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+.header-blackjack__bet.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.game {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+.game::after {
+  content: "BLACKJACK";
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  font-size: rem(160);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: #fff;
+  opacity: 0.15;
+}
+.game__cards {
+  min-width: rem(650);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  margin-bottom: rem(20);
+  height: rem(270);
+  border-radius: 25px;
+}
+.game__diler_cards {
+  margin-bottom: rem(90);
+}
+.game__diler_cards .game__card {
+  left: -50.5%;
+}
+.game__diler_cards .game__card:nth-child(2) {
+  top: 5%;
+  left: -51%;
+}
+.game__player_cards .game__card {
+  left: -49.5%;
+  top: -130.2%;
+}
+.game__card {
+  width: 182px;
+  height: 269px;
+  line-height: lh(90, 30);
+  font-size: rem(60);
+  background-color: #fff;
+  text-align: center;
+  -webkit-transition: left 0.45s ease-out 0s, top 0.45s ease-out 0s, -webkit-transform 0.45s ease-out 0.1s;
+  transition: left 0.45s ease-out 0s, top 0.45s ease-out 0s, -webkit-transform 0.45s ease-out 0.1s;
+  transition: transform 0.45s ease-out 0.1s, left 0.45s ease-out 0s, top 0.45s ease-out 0s;
+  transition: transform 0.45s ease-out 0.1s, left 0.45s ease-out 0s, top 0.45s ease-out 0s, -webkit-transform 0.45s ease-out 0.1s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  border-radius: 12px;
+  position: absolute;
+}
+.game__card.active, .game__card.start {
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.game__card.active {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+.game__card img {
+  width: 182px;
+  height: 269px;
+  -webkit-box-shadow: 3px 7px 9px #000;
+          box-shadow: 3px 7px 9px #000;
+  border-radius: 15px;
+}
+.game__diler_score, .game__player_score {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #859a85;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: rem(32);
+  position: absolute;
+  top: 50%;
+  right: -210px;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+.game__diler_score.active, .game__player_score.active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: visible;
+}
+.game__diler_score.green, .game__player_score.green {
+  background-color: #399739;
+}
+.game__diler_score.red, .game__player_score.red {
+  background-color: #be1c1c;
+}
+.game__diler_score.blue, .game__player_score.blue {
+  background-color: #205fc3;
+}
+.game__back, .game__front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-box-shadow: 4px 4px 4px #4f4f4f;
+          box-shadow: 4px 4px 4px #4f4f4f;
+  border-radius: 15px;
+}
+.game__front {
+  z-index: 2;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.game__back {
+  display: none;
+}
+.game__back.back {
+  display: block;
+  z-index: 1;
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  width: 100%;
+}
+
+.blackjack-btns .btn {
+  padding: 12px 42px;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  width: 150px;
+  text-align: center;
+}
+.blackjack-btns .btn.active {
+  opacity: 0.8;
+  pointer-events: none;
+}
+.blackjack-btns__more {
+  background-color: #3023c8;
+}
+.blackjack-btns__more:hover {
+  background-color: #2d21b0;
+}
+.blackjack-btns__pass {
+  background-color: #ad0631;
+}
+.blackjack-btns__pass:hover {
+  background-color: #9e062c;
+}
+
+.range-blackjack__bet {
+  -webkit-appearance: none;
+  display: block;
+  width: 100%;
+  height: 20px;
+  border-radius: 7px;
+  background: #1f1f1f;
+  outline: none;
+  -webkit-box-shadow: 3px 3px 6px #000, inset 1px 1px 1px #909090;
+          box-shadow: 3px 3px 6px #000, inset 1px 1px 1px #909090;
+}
+.range-blackjack__bet::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  z-index: 3;
+}
+.range-blackjack__thumb {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  background: #090909;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 2;
+  -webkit-box-shadow: inset 0px 1px 2px #909090;
+          box-shadow: inset 0px 1px 2px #909090;
+}
+.range-blackjack__thumb::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: inherit;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  background: #333;
+}
+.range-blackjack__thumb:hover::before, .range-blackjack__thumb.active::before {
+  background: #2ae9c9;
+}
+.range-blackjack__tooltip {
+  position: absolute;
+  width: rem(140);
+  height: rem(55);
+  border-radius: 7px;
+  color: #fff;
+  font-size: rem(28);
+  text-align: center;
+  background: #090909;
+  top: rem(-55);
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  line-height: lh(35, 16);
+  -webkit-box-shadow: 0px 3px 10px #1f1f1f, inset 0 1px 2px #909090;
+          box-shadow: 0px 3px 10px #1f1f1f, inset 0 1px 2px #909090;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+.range-blackjack__tooltip.active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+}
+.range-blackjack__tooltip::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid #090909;
+  bottom: rem(-22);
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.range-blackjack__progress {
+  width: 50%;
+  background: -webkit-gradient(linear, left top, right top, from(#335bf4), to(#2ae9));
+  background: linear-gradient(90deg, #335bf4 0%, #2ae9 100%);
+  border-radius: 7px;
+  height: rem(15);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  pointer-events: none;
+}
