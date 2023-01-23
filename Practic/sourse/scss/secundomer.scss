@@ -1,0 +1,167 @@
+//todo ======================= - secundomer - =======================//
+.secundomer {
+   padding: rem(60) 0 rem(100);
+   color: #000;
+   border-bottom: solid 1px #000;
+   position: relative;
+   overflow: hidden;
+   background: #000;
+   // .secundomer__container
+   &__container {
+      font-size: rem(42);
+      position: relative;
+   }
+   // .secundomer__title
+   &__title {
+      text-align: center;
+      margin-bottom: em(75,32);
+   }
+   // .secundomer__body
+   &__body {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: em(120,42);
+   }
+   // .secundomer__decor
+   &__decor {
+      position: absolute;
+         width: 100%;
+         height: 10px;
+         top: 65%;
+         left: 0;
+         background-color: #fff;
+         border-radius: 10px;
+         transition: all 0.3s ease 0s;
+         & span {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(252,70,72,0.9) 14%, rgba(63,94,251,0.9) 80%);
+            border-radius: 10px;
+            width: 0;
+         }
+          
+         &.active span {
+            animation: decorLine infinite 60s linear;
+         }
+         &.pause span {
+            animation-play-state: paused;
+         }
+         // &.end span {
+            // animation: decorLineOut 2s ease;
+            // animation-play-state: paused;
+         // }
+   }
+   // .secundomer__btns
+   &__btns {
+      display: flex;
+      justify-content: center;
+      font-size: rem(32);
+      column-gap: rem(40);
+   }
+   // .secundomer__item
+   &__item {
+      width: rem(125);
+      text-align: center;
+      user-select: none;
+      color: #fff;
+      position: relative;
+      
+      &_name {
+         font-size: rem(24);
+         background-color: #000;
+         color: #fff;
+      }
+
+      &:not(:last-child)::after {
+         content: ':';
+         position: absolute;
+         font-size: rem(48);
+         top: 10%;
+         left: 170px;
+      }
+
+      & span {
+         display: block;
+         border: 1px solid #fff;
+         padding: rem(15) rem(40);
+      }
+   }
+   // .secundomer__btn
+   &__btn {
+      padding: rem(15) rem(70);
+      border-radius: 10px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s ease 0s;
+      width: rem(200);
+      text-align: center;
+      color: #fff;
+
+      &-play {
+         background-color: rgb(5, 129, 5);
+         &:hover {
+            background-color: rgb(6, 118, 6);
+         }
+      }
+      &.stop {
+         background-color: #c50f0f;
+         &:hover {
+            background-color: #b51111;
+         }
+      }
+      &-save {
+         background-color: #2b2bb9;
+
+         &:hover {
+            background-color: #242492;
+         }
+      }
+      &.reset {
+         background-color: #871187;
+         &:hover {
+            background-color: #741074;
+         }
+      }
+
+      &.active,&.limit {
+         opacity: 0.6;
+         cursor: inherit;
+         pointer-events: none;
+      }
+   }
+   // .secundomer__save_block
+   &__save_block {
+      position: absolute;
+      top: 30px;
+      left: -100%;
+      transition: all .3s ease 0s;
+      font-size: rem(20);
+      max-height: rem(500);
+      overflow: hidden;
+      border-radius: 10px;
+
+      // .secundomer__save_block-item
+      &-item {
+      width: rem(129);
+      text-align: center;
+      transition: all 0.3s ease 0s;
+      position: relative;
+      top: 0;
+      left: -120%;
+      padding: rem(8);
+      background-color: #2b2bb9;
+      color: #fff;
+   }
+      &.active,&-item.active {
+         left: 0;
+      }
+   }
+}
+@keyframes decorLine {
+   0% {
+      width: 0;
+   }
+   100% {
+      width: 100%;
+   }
+}
