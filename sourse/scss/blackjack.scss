@@ -1,0 +1,464 @@
+//todo ======================= - blackjack - =======================//
+.blackjack {
+   min-height: 100vh;
+   padding: 0 0 rem(100);
+   position: relative;
+   background-color: #084708;
+      &::after {
+      content: '';
+      width: 100%;
+      height: rem(100);
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: yellowgreen;
+   }
+   // .blackjack__container
+   &__container {
+      max-width: rem(1200);
+   }
+   // .blackjack__header
+   &__header {
+      height: rem(100);
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      background-color: yellowgreen;
+      margin-bottom: rem(100);
+      z-index: 2;
+   }
+   // .blackjack__btns
+   &__btns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: rem(60);
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease 0s;
+      position: absolute;
+      left: 50%;
+      top: 930px;
+      transform: translate(-50%,0);
+      &.active {
+         visibility: visible;
+         opacity: 1;
+         pointer-events: visible;
+      }
+   }
+   // .blackjack__start
+   &__start {
+      display: flex;
+      flex-direction: column;
+      row-gap: rem(60);
+      position: relative;
+      transition: all 0.25s ease 0s;
+      font-size: rem(24);
+      color: #c1c0c0;
+      font-style: italic;
+      &.hidden {
+         visibility: hidden;
+         opacity: 0;
+         pointer-events: none;
+      }
+   }
+   // .blackjack__start_btn
+   &__start_btn {
+      background-color: #007700;
+      text-align: center;
+      width: 34%;
+      margin: 0 auto;
+      transition: all 0.3s ease 0s;
+      &:hover {background-color: #046f04;}
+      &.active {
+         opacity: 0.7;
+         pointer-events: none;
+      }
+   }
+   // .blackjack__start_text
+   &__start_text {
+      transition: all 0.2s ease 0s;
+      position: absolute;
+      top: -30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+   }
+   // .blackjack__game_round
+   &__game_round {
+      width: 12.5rem;
+      position: absolute;
+      font-size: 2.75rem;
+      bottom: 160px;
+      right: 180px;
+      opacity: 0.25;
+      color: #ffffff;
+
+      & span {
+         font-size: rem(84);
+      }
+   }
+   // .blackjack__range
+   &__range {
+      position: relative;
+      display: flex;
+      width: rem(600);
+      margin: 0 auto;
+      &.active {
+         pointer-events: none;
+      }
+   }
+   // .blackjack__chips
+   &__chips {
+   }
+   // .blackjack__chip
+   &__chip {
+      position: absolute;
+      right: 0;
+      bottom: -140%;
+      transition: all 0.3s ease 0s;
+      box-shadow: 3px 3px 6px #333;
+      border-radius: 50%;
+      transform-style: preserve-3d;
+      & img {
+         width: 100px;
+         height: 100px;
+         display: flex;
+      }
+      &.active {
+         transform: rotateX(20deg);
+         right: 230px;
+         bottom: -95px;
+         z-index: 2;
+         &.place-2,&.place-4,&.place-6{
+            bottom: -185px;
+            right: 175px;
+            z-index: 3;
+         }
+         &.place-3{
+            right: 120px;
+         }
+         &.place-4{
+            right: 60px;
+         }
+         &.place-5{
+            right: 10px;
+         }
+         &.place-6{
+            right: -55px;
+         }
+      }
+   }
+}
+.header-blackjack {
+   // .header-blackjack__score
+   &__score {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      column-gap: rem(15);
+      z-index: 3;
+      position: relative;
+      text-align: center;
+      font-size: rem(26);
+   }
+   // .header-blackjack__img
+   &__img {
+      display: flex;
+      z-index: 3;
+      & img {
+         width: 65px;
+         height: 65px;
+      }
+   }
+   // .header-blackjack__text
+   &__text {
+      font-size: rem(24);
+   }
+   // .header-blackjack__title
+   &__title {
+   }
+   // .header-blackjack__result
+   &__result {
+      font-size: rem(32);
+   }
+   // .header-blackjack__bet
+   &__bet {
+      display: block;
+      position: absolute;
+      right: rem(-130);
+      width: rem(105);
+      bottom: 0;
+      text-align: left;
+      z-index: 80;
+      line-height: lh(48,26);
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s ease 0s;
+
+      &.active {
+         visibility: visible;
+         opacity: 1;
+      }
+   }
+}
+.game {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   position: relative;
+   &::after {
+      content: 'BLACKJACK';
+      position: absolute;
+      top: 47%;
+      left: 50%;
+      font-size: rem(160);
+      transform: translate(-50%, -50%);
+      color: #fff;
+      opacity: .15;
+   }
+   // .game__cards
+   &__cards {
+      min-width: rem(650);
+      display: flex;
+      justify-content: center;
+      position: relative;
+      margin-bottom: rem(20);
+      height: rem(270);
+      border-radius: 25px;
+   }
+   // .game__diler_cards
+   &__diler_cards {
+      margin-bottom: rem(90);
+
+      & .game__card {
+         left: -50.5%;
+         &:nth-child(2){top: 5%;left: -51%;}
+      }
+   }
+   // .game__player_cards
+   &__player_cards {
+      & .game__card {
+         left: -49.5%;
+         top: -130.2%;
+      }
+   }
+   // .game__card
+   &__card {
+      width: 182px;
+      height: 269px;
+      line-height: lh(90,30);
+      font-size: rem(60);
+      background-color: #fff;
+      text-align: center;
+      transition: transform .45s ease-out 0.1s,
+      left .45s ease-out 0s,
+      top .45s ease-out 0s;
+      transform-style: preserve-3d;
+      border-radius: 12px;
+      position: absolute;
+
+      &.active,&.start {
+         left: 0;
+         top: 0;
+         z-index: 1;
+      }
+      &.active {
+         transform: rotateY(180deg);
+      }
+      & img {
+         width: 182px;
+         height: 269px;
+         box-shadow: 3px 7px 9px #000;
+         border-radius: 15px;
+      }
+   }
+   // .game__diler_score,.game__player_score
+   &__diler_score,&__player_score {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background-color: #859a85;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: rem(32);
+      position: absolute;
+      top: 50%;
+      right: -210px;
+      transform: translate(0,-50%);
+      transition: all 0.3s ease 0s;
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+
+      &.active {
+         visibility: visible;
+         opacity: 1;
+         pointer-events: visible;
+      }
+
+      &.green {
+         background-color: #399739;
+      }
+      &.red {
+         background-color: #be1c1c;
+      }
+      &.blue {
+         background-color: #205fc3;
+      }
+   }
+   // .game__wrap
+   &__wrap {
+   }
+   &__back,&__front{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      box-shadow: 4px 4px 4px #4f4f4f;
+      border-radius: 15px;
+   }
+   // .game__front
+   &__front {
+      z-index: 2;
+      backface-visibility: hidden;
+   }
+   // .game__back
+   &__back {
+      display: none;
+      &.back {
+         display: block;
+         z-index: 1;
+         transform: rotateY(-180deg);
+         backface-visibility: hidden;
+         width: 100%;
+      }
+   }
+}
+.blackjack-btns {
+   & .btn {
+      padding: 12px 42px;
+      transition: all 0.3s ease 0s;
+      width: 150px;
+      text-align: center;
+      &.active {
+         opacity: .8;
+         pointer-events: none;
+      }
+   }
+   // .blackjack-btn
+   &__more {
+      background-color: #3023c8;
+      &:hover {background-color: #2d21b0;}
+   }
+   // .blackjack-btn
+   &__pass {
+      background-color: #ad0631;
+      &:hover {background-color: #9e062c;}
+   }
+}
+.range-blackjack {
+   // .range-blackjack__bet
+   &__bet {
+      -webkit-appearance: none;
+      display: block;
+      width: 100%;
+      height: 20px;
+      border-radius: 7px;
+      background: #1f1f1f;
+      outline: none;
+      box-shadow: 3px 3px 6px #000,
+      inset 1px 1px 1px #909090;
+
+      &::-webkit-slider-thumb {
+         -webkit-appearance: none;
+         width: 45px;
+         height: 45px;
+         cursor: pointer;
+         z-index: 3;
+      }
+   }
+   // .range-blackjack__thumb
+   &__thumb {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      background: #090909;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      box-shadow: inset 0px 1px 2px #909090;
+
+      &::before {
+         content: '';
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         width: 20px;
+         height: 20px;
+         transform: translate(-50%, -50%);
+         border-radius: inherit;
+         transition: all 0.3s ease 0s;
+         background: #333;
+      }
+      &:hover::before,&.active::before{
+         background: #2ae9c9;
+      }
+   }
+   // .range-blackjack__tooltip
+   &__tooltip {
+      position: absolute;
+      width: rem(140);
+      height: rem(55);
+      border-radius: 7px;
+      color: #fff;
+      font-size: rem(28);
+      text-align: center;
+      background: #090909;
+      top: rem(-55);
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      line-height: lh(35,16);
+      box-shadow: 0px 3px 10px #1f1f1f,
+      inset 0 1px 2px #909090;
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease 0s;
+      &.active {
+         visibility: visible;
+         opacity: 1;
+         pointer-events: all;
+      }
+
+      &::before {
+         content: '';
+         position: absolute;
+         width: 0;
+         height: 0;
+         border-left: 15px solid transparent;
+         border-right: 15px solid transparent;
+         border-top: 15px solid #090909;
+         bottom: rem(-22);
+         left: 50%;
+         transform: translate(-50%,-50%);
+      }
+   }
+   // .range-blackjack__progress
+   &__progress {
+      width: 50%;
+      background: linear-gradient(90deg,#335bf4 0%,#2ae9 100%);
+      border-radius: 7px;
+      height: rem(15);
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      pointer-events: none;
+   }
+}
