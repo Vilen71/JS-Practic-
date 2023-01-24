@@ -293,6 +293,7 @@ function blackjack() {
          tooltip.classList.remove("active");
          thumb.classList.remove("active");
          startText.classList.remove("hidden");
+         startGameBtn.classList.add("active");
       }
    }
    function chips() {
